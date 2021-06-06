@@ -13,7 +13,7 @@ import gladun.vlad.weather.data.persistence.entity.VenuesWithCountryDetails
 @Database(
     entities = [CountryEntity::class, VenueForecastEntity::class],
     views = [VenuesWithCountryDetails::class],
-    version = 1
+    version = 2
 )
 abstract class AppDatabase : RoomDatabase() {
 
@@ -35,11 +35,11 @@ fun <T : RoomDatabase> RoomDatabase.Builder<T>.addAppMigrations(): RoomDatabase.
 
     // For the demo purposes only:
     // adding migration scripts if the DB structure (and version) has changed
-//    addMigrations(
-//        migration(1, 2) {
-//            it.execSQL(" TODO: MIGRATION SQL SCRIPT ")
-//        }
-//    )
+    addMigrations(
+        migration(1, 2) {
+            it.execSQL("ALTER TABLE venue_forecast ADD COLUMN condition_icon TEXT")
+        }
+    )
 
     return this
 }

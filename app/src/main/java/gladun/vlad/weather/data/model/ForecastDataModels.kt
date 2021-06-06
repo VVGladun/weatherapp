@@ -26,6 +26,9 @@ data class VenueForecast(
     @Json(name = "_weatherCondition")
     val weatherCondition: String?,
 
+    @Json(name = "_weatherConditionIcon")
+    val weatherConditionIcon: String?,
+
     @Json(name = "_weatherWind")
     val weatherWind: String?,
 
@@ -45,17 +48,17 @@ data class VenueForecast(
 @JsonClass(generateAdapter = true)
 data class CountryDto(
     @Json(name = "_countryID")
-    val countryId: String = "",
+    val countryId: String,
     @Json(name = "_name")
-    val countryName: String = ""
+    val countryName: String
 )
 
 @JsonClass(generateAdapter = true)
 data class SportDto(
     @Json(name = "sportID")
-    val sportId: String? = null,
+    val sportId: String,
 
     @Json(name = "description")
-    val description: String? = null
+    val description: String
 )
 
