@@ -12,8 +12,8 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import gladun.vlad.weather.BuildConfig
 import gladun.vlad.weather.data.network.WeatherApi
-import gladun.vlad.weather.data.network.WeatherApiClient
 import gladun.vlad.weather.data.persistence.AppDatabase
+import gladun.vlad.weather.data.persistence.PreferenceStore
 import gladun.vlad.weather.data.persistence.addAppMigrations
 import gladun.vlad.weather.data.persistence.dao.CountryDao
 import gladun.vlad.weather.data.persistence.dao.ForecastDao
@@ -64,7 +64,7 @@ object NetworkModule {
 
 @Module
 @InstallIn(SingletonComponent::class)
-object DatabaseModule {
+object PersistenceModule {
     @Provides
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): AppDatabase {
@@ -86,6 +86,11 @@ object DatabaseModule {
     @Provides
     fun provideForecastDao(appDatabase: AppDatabase): ForecastDao {
         return appDatabase.forecastDao()
+    }
+
+    @Provides
+    fun providePreferenceStore(@ApplicationContext context: Context): PreferenceStore {
+        return PreferenceStore(context)
     }
 
 }

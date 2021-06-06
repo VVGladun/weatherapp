@@ -7,9 +7,12 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 abstract class ForecastDao : BaseDao<VenueForecastEntity>() {
-    @Query("select * from venue_forecast")
+    @Query("SELECT * FROM venue_forecast")
     abstract fun getAllForecasts(): Flow<List<VenueForecastEntity>>
 
-    @Query("select * from venue_forecast where country_id = :countryId order by venue_name")
+    @Query("SELECT * FROM venue_forecast WHERE country_id = :countryId ORDER BY venue_name LIMIT 1")
     abstract fun getForecastsForCountry(countryId: String): Flow<List<VenueForecastEntity>>
+
+    @Query("SELECT * FROM venue_forecast WHERE id = :venueId")
+    abstract fun getForecastForVenue(venueId: String): Flow<List<VenueForecastEntity>>
 }
