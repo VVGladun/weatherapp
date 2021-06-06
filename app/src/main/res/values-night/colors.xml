@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="default_background">@color/almost_black</color>
+    <color name="divider_color">@color/dark_grey_50</color>
+    <color name="darker_text_color">@color/light_grey</color>
+    <color name="default_text_color">@color/dark_grey</color>
+</resources>

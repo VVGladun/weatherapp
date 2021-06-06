@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Text">
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textColor">@color/default_text_color</item>
+    </style>
+    <style name="Text.LightBlue">
+        <item name="android:textColor">@color/light_teal</item>
+    </style>
+    <style name="Text.Bold">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/darker_text_color</item>
+    </style>
+    <style name="Text.Display">
+        <item name="android:textSize">@dimen/text_size_48</item>
+        <item name="android:textColor">@color/light_teal</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Text.Heading1">
+        <item name="android:textSize">@dimen/text_size_24</item>
+        <item name="android:textColor">@color/darker_text_color</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Text.Heading2">
+        <item name="android:textSize">@dimen/text_size_22</item>
+    </style>
+    <style name="Text.SmallLabel">
+        <item name="android:textSize">@dimen/text_size_10</item>
+    </style>
+    <style name="TextButton" parent="Text.Heading2">
+        <item name="android:textSize">@dimen/text_size_22</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:background">@color/default_background</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="android:padding">@dimen/padding_16</item>
+    </style>
+
+    <style name="Divider">
+        <item name="android:background">@color/divider_color</item>
+        <item name="android:layout_height">@dimen/divider_height</item>
+    </style>
+</resources>

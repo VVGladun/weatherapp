@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/default_background">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/item_venue_title"
+        style="@style/Text.Heading1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/item_venue_temperature"
+        android:layout_marginStart="@dimen/padding_24"
+        android:layout_marginEnd="@dimen/padding_16"
+        tools:text="Cadeview"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/item_venue_condition"
+        style="@style/Text.Heading2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/item_venue_temperature"
+        app:layout_constraintTop_toBottomOf="@+id/item_venue_title"
+        android:layout_marginStart="@dimen/padding_24"
+        android:layout_marginEnd="@dimen/padding_16"
+        tools:text="Rain"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/item_venue_updated"
+        style="@style/Text.SmallLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/item_venue_temperature"
+        app:layout_constraintTop_toBottomOf="@+id/item_venue_condition"
+        app:layout_constraintBottom_toTopOf="@+id/item_venue_divider"
+        android:layout_marginStart="@dimen/padding_24"
+        android:layout_marginEnd="@dimen/padding_16"
+        android:layout_marginBottom="@dimen/padding_8"
+        tools:text="Last updated: 9:00am 01.12.2021"
+        tools:visibility="visible"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/item_venue_temperature"
+        style="@style/Text.Display"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="@dimen/padding_16"
+        android:layout_marginBottom="@dimen/padding_16"
+        android:layout_marginEnd="@dimen/padding_24"
+        tools:text="24&#xb0;"
+        />
+
+    <View
+        android:id="@+id/item_venue_divider"
+        android:layout_width="0dp"
+        style="@style/Divider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/padding_16"
+        android:layout_marginEnd="@dimen/padding_16"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

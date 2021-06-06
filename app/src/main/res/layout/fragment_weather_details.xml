@@ -1,18 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
-    <TextView
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/details_guideline_secondBlock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".35" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/details_guideline_thirdBlock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".65" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/details_temperature"
+        style="@style/Text.Display"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/padding_24"
+        android:layout_marginEnd="@dimen/padding_24"
+        tools:text="24&#xb0;"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/details_venue_title"
+        style="@style/Text.Heading1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/details_temperature"
+        android:layout_marginStart="@dimen/padding_24"
+        android:layout_marginEnd="@dimen/padding_16"
+        tools:text="Cadeview"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/details_condition"
+        style="@style/Text.Heading2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/details_temperature"
+        app:layout_constraintTop_toBottomOf="@+id/details_venue_title"
+        android:layout_marginStart="@dimen/padding_24"
+        android:layout_marginEnd="@dimen/padding_16"
+        tools:text="Rain"
+        />
+
+    <View
+        android:id="@+id/details_top_divider"
+        android:layout_width="0dp"
+        style="@style/Divider"
+        app:layout_constraintTop_toBottomOf="@id/details_temperature"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/padding_16"
+        android:layout_marginStart="@dimen/padding_16"
+        android:layout_marginEnd="@dimen/padding_16"
+        />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/details_feels_like_title"
+        style="@style/Text.Bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/details_guideline_secondBlock"
+        app:layout_constraintTop_toBottomOf="@+id/details_top_divider"
+        android:layout_marginStart="@dimen/padding_24"
+        android:layout_marginEnd="@dimen/padding_8"
+        android:text="@string/feels_like"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/details_feels_like_value"
+        style="@style/Text.LightBlue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/details_guideline_secondBlock"
+        app:layout_constraintTop_toBottomOf="@+id/details_feels_like_title"
+        android:layout_marginStart="@dimen/padding_24"
+        android:layout_marginEnd="@dimen/padding_8"
+        tools:text="20&#xb0;"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/details_humidity_title"
+        style="@style/Text.Bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/details_guideline_secondBlock"
+        app:layout_constraintEnd_toStartOf="@+id/details_guideline_thirdBlock"
+        app:layout_constraintTop_toBottomOf="@+id/details_top_divider"
+        android:layout_marginEnd="@dimen/padding_8"
+        android:layout_marginStart="@dimen/padding_8"
+        android:text="@string/humidity"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/details_humidity_value"
+        style="@style/Text.LightBlue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/details_humidity_title"
+        app:layout_constraintEnd_toStartOf="@+id/details_guideline_thirdBlock"
+        app:layout_constraintTop_toBottomOf="@+id/details_humidity_title"
+        android:layout_marginEnd="@dimen/padding_8"
+        tools:text="20%"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/details_wind_title"
+        style="@style/Text.Bold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/details_guideline_thirdBlock"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/details_top_divider"
+        android:layout_marginEnd="@dimen/padding_24"
+        android:layout_marginStart="@dimen/padding_8"
+        android:text="@string/wind"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/details_wind_value"
+        style="@style/Text.LightBlue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/details_wind_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/details_wind_title"
+        android:layout_marginEnd="@dimen/padding_24"
+        tools:text="ESE at 17kph"
+        />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/details_conditions_barrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="details_feels_like_value,details_humidity_value,details_wind_value"
+        />
+
+    <View
+        android:id="@+id/details_conditions_divider"
+        android:layout_width="0dp"
+        style="@style/Divider"
+        app:layout_constraintTop_toBottomOf="@id/details_conditions_barrier"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/padding_16"
+        android:layout_marginStart="@dimen/padding_16"
+        android:layout_marginEnd="@dimen/padding_16"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/details_updated"
+        style="@style/Text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/details_conditions_divider"
+        android:layout_marginTop="@dimen/padding_12"
+        android:layout_marginStart="@dimen/padding_24"
+        android:layout_marginEnd="@dimen/padding_24"
+        tools:text="Last updated: 9:00am 01.12.2021"
+        tools:visibility="visible"
+        />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

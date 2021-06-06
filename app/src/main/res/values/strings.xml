@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">weather-app</string>
+    
+    <string name="screen_weather_title">Weather</string>
+    <string name="screen_filter_title">Select country</string>
+
+    <string name="filter">Filter</string>
+    <string name="feels_like">Feels like</string>
+    <string name="humidity">Humidity</string>
+    <string name="wind">Wind</string>
+    <string name="last_updated">Last updated: %1$s</string>
+    <string name="temp_celsius">%1$d&#xb0;</string>
 </resources>
