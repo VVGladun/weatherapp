@@ -56,6 +56,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
 
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
@@ -77,6 +78,7 @@ dependencies {
     // DI - Hilt (Dagger)
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    kapt "androidx.hilt:hilt-compiler:1.0.0"
 
     // Network - HTTP client
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
@@ -91,6 +93,9 @@ dependencies {
     implementation "com.squareup.moshi:moshi-adapters:$moshi_version"
 
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
+
+    // Pre-java9 JSR-310 (DateTime) impl for Android (https://github.com/JakeWharton/ThreeTenABP)
+    implementation "com.jakewharton.threetenabp:threetenabp:1.3.0"
 
 
     testImplementation 'junit:junit:4.13.2'

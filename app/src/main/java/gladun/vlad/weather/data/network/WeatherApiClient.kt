@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 interface WeatherApi {
     @GET("venues/weather.json")
-    fun getWeather(): WeatherResponse
+    suspend fun getWeather(): WeatherResponse
 }
 
 

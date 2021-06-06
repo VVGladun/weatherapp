@@ -2,6 +2,8 @@ package gladun.vlad.weather.data.model
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import gladun.vlad.weather.data.persistence.entity.CountryEntity
+import gladun.vlad.weather.data.persistence.entity.VenueForecastEntity
 
 @JsonClass(generateAdapter = true)
 data class WeatherResponse (
@@ -62,3 +64,24 @@ data class SportDto(
     val description: String
 )
 
+fun VenueForecast.toEntity(): VenueForecastEntity {
+    return VenueForecastEntity(
+        id = venueId!!,
+        venueName = venueName!!,
+        countryId = country!!.countryId,
+        condition = weatherCondition,
+        conditionIcon = weatherConditionIcon,
+        wind = weatherWind,
+        humidity = weatherHumidity,
+        temp = weatherTemp,
+        feelsLike = weatherFeelsLike,
+        lastUpdated = lastUpdated!!
+    )
+}
+
+fun CountryDto.toEntity(): CountryEntity {
+    return CountryEntity(
+        id = countryId,
+        countryName = countryName
+    )
+}
