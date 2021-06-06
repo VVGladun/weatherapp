@@ -20,4 +20,19 @@
         app:navGraph="@navigation/nav_graph"
         />
 
+<!--    TODO: use some fullscreen overlay with a loading indicator-->
+    <ProgressBar
+        android:id="@+id/activity_loader"
+        style="@android:style/Widget.ProgressBar.Inverse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

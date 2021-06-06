@@ -3,10 +3,10 @@ package gladun.vlad.weather
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
-@JsonClass(generateAdapter = true)
+@JsonClass(generateAdapter = false)
 data class WeatherResponse (
     @Json(name = "isOkay")
-    val isOkay: Boolean = true
+    val isOkay: Boolean = false
 
 //TODO: add other fields
 )

@@ -7,7 +7,7 @@ import retrofit2.http.GET
 import java.lang.Exception
 
 interface WeatherApi {
-    @GET("venues/weather.json")
+//    @GET("venues/weather.json")
     fun getWeather(): WeatherResponse
 }
 
