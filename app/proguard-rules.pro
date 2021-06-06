@@ -19,3 +19,18 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+###############
+###  Moshi  ###
+###############
+# -------------
+# https://github.com/square/moshi/blob/master/kotlin/reflect/src/main/resources/META-INF/proguard/moshi-kotlin.pro
+# -------------
+-keep class kotlin.reflect.jvm.internal.impl.builtins.BuiltInsLoaderImpl
+-keepclassmembers class kotlin.Metadata {
+    public <methods>;
+}
+-keepclassmembers,allowobfuscation class ** {
+    @com.squareup.moshi.Json <fields>;
+    @com.squareup.moshi.Json <methods>;
+}

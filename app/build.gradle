@@ -16,7 +16,14 @@ android {
         versionCode 1
         versionName "1.0"
 
+        buildConfigField "String", "BASE_API_URL", "\"http://dnu5embx6omws.cloudfront.net/\""
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // Room database schemas will be output to schemas dir for inspection.
+        kapt.arguments {
+            arg("room.schemaLocation", "$projectDir/schemas".toString())
+        }
     }
 
     buildFeatures {
@@ -77,6 +84,7 @@ dependencies {
     implementation "com.squareup.moshi:moshi:$moshi_version"
     implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
     implementation "com.squareup.moshi:moshi-adapters:$moshi_version"
+
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
 
 

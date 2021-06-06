@@ -1,18 +1,22 @@
 package gladun.vlad.weather.data.network
 
-import gladun.vlad.weather.WeatherResponse
+import gladun.vlad.weather.data.model.WeatherResponse
+import gladun.vlad.weather.inject.BackgroundDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import retrofit2.http.GET
 import java.lang.Exception
+import javax.inject.Inject
 
 interface WeatherApi {
-//    @GET("venues/weather.json")
+    @GET("venues/weather.json")
     fun getWeather(): WeatherResponse
 }
 
-//TODO: inject!
-class WeatherApiClient(private val weatherApi: WeatherApi, private val coroutineDispatcher: CoroutineDispatcher) {
+
+class WeatherApiClient @Inject constructor(
+    private val weatherApi: WeatherApi,
+    @BackgroundDispatcher private val coroutineDispatcher: CoroutineDispatcher) {
 
     suspend fun getWeatherData(): WeatherResponse = withContext(coroutineDispatcher) {
         try {
