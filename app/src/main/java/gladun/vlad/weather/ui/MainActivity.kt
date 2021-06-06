@@ -1,7 +1,8 @@
-package gladun.vlad.weather
+package gladun.vlad.weather.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import gladun.vlad.weather.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

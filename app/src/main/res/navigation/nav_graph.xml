@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="gladun.vlad.weather.ui.home.WeatherListFragment"
+        android:label="fragment_weather_list"
+        tools:layout="@layout/fragment_weather_list">
+
+        <action
+            android:id="@+id/action_home_to_weatherDetails"
+            app:destination="@id/weatherDetails"
+            app:enterAnim="@anim/slide_in_left_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/slide_out_right_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/weatherDetails"
+        android:name="gladun.vlad.weather.ui.home.WeatherDetailsFragment"
+        android:label="fragment_weather_details"
+        tools:layout="@layout/fragment_weather_details" />
+</navigation>
