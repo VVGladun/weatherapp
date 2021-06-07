@@ -15,4 +15,7 @@ abstract class ForecastDao : BaseDao<VenueForecastEntity>() {
 
     @Query("SELECT * FROM venue_forecast WHERE id = :venueId LIMIT 1")
     abstract fun getForecastForVenue(venueId: String): Flow<VenueForecastEntity>
+
+    @Query("SELECT count(*) FROM venue_forecast")
+    abstract fun getForecastItemCount(): Flow<Int>
 }

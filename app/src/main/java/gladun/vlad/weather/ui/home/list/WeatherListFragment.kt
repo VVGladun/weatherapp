@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import gladun.vlad.weather.R
 import gladun.vlad.weather.databinding.FragmentWeatherListBinding
@@ -39,19 +40,19 @@ class WeatherListFragment
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding!!.weatherListRecyclerview.apply {
-            adapter = WeatherListAdapter(context.applicationContext.resources) {
-                viewModel.navigateToDetails(it.venueId)
-            }
-        }
-
-        viewModel.weatherData.observe {
-            (binding?.weatherListRecyclerview?.adapter as? WeatherListAdapter)?.items = it
-        }
-        viewModel.isFilterVisibleData.observe { isFilterVisible ->
+        viewModel.isWeatherDataVisibleData.observe { isFilterVisible ->
             binding?.weatherListFilterButton?.isVisible = isFilterVisible
             binding?.itemVenueDivider?.isVisible = isFilterVisible
         }
+
+        binding!!.weatherListPager.apply {
+            adapter = TabsPageAdapter(this@WeatherListFragment)
+        }
+
+        val tabLayout = binding!!.weatherListTabs
+        TabLayoutMediator(tabLayout, binding!!.weatherListPager) { tab, position ->
+            tab.text = SortSettings.values()[position].displayName
+        }.attach()
 
         binding!!.weatherListFilterButton.setOnClickListener { viewModel.onFilterClicked() }
         binding!!.weatherListSwiperefresh.setOnRefreshListener(this)
@@ -65,4 +66,10 @@ class WeatherListFragment
         super.onDestroyView()
         binding = null
     }
+}
+
+enum class SortSettings(val displayName: String) {
+    VenueName("A-Z"),
+    Temperature("Temperature"),
+    LastUpdated("Last updated")
 }

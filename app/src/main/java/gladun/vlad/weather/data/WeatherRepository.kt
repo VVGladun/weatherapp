@@ -67,6 +67,8 @@ class WeatherRepository @Inject constructor(
         }
     }
 
+    fun getWeatherDataItemCount(): Flow<Int> = forecastDao.getForecastItemCount()
+
     fun getWeatherDetails(venueId: String): Flow<WeatherDetails> {
         return forecastDao.getForecastForVenue(venueId).mapNotNull {
             WeatherDetails.fromEntity(it, resources)

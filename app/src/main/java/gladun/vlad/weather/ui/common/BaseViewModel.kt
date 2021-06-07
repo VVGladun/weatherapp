@@ -58,7 +58,9 @@ abstract class BaseViewModel : ViewModel() {
 
     open fun onBackPressed(): Boolean = false
 
-    protected fun executeAction(action: Action) = this.action.postValue(SingleEvent(action))
+    protected fun executeAction(action: Action) {
+        this.action.postValue(SingleEvent(action))
+    }
 
     protected fun navigateBack(@IdRes toDestinationId: Int? = null, inclusive: Boolean = false) = executeAction(Action.NavigateBack(toDestinationId, inclusive))
 
