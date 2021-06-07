@@ -1,6 +1,7 @@
 package gladun.vlad.weather.inject
 
 import android.content.Context
+import android.content.res.Resources
 import androidx.room.Room
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -105,6 +106,13 @@ object CoroutineModule {
     @Provides
     @BackgroundDispatcher
     fun provideBackgroundDispatcher(): CoroutineDispatcher = Dispatchers.IO
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
+object AppContextModule {
+    @Provides
+    fun provideResources(@ApplicationContext context: Context): Resources = context.resources
 }
 
 // Qualifiers to inject two different dispatchers based on the annotation

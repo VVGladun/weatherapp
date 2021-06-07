@@ -8,6 +8,7 @@ import org.threeten.bp.ZonedDateTime
 data class WeatherListItem(
     val venueId: String,
     val venueName: String,
+    val condition: String,
     val temp: String,
     val countryId: String,
     val lastUpdated: ZonedDateTime
@@ -22,6 +23,7 @@ data class WeatherListItem(
             return WeatherListItem(
                 venueId = entity.id,
                 venueName = entity.venueName,
+                condition = entity.condition.orEmpty(),
                 temp = entity.temp.orEmpty(),
                 countryId = entity.countryId,
                 lastUpdated = localDateTime)

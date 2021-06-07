@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 import kotlin.collections.ArrayList
 
-abstract class BaseListAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+abstract class BaseListAdapter<T, Q : RecyclerView.ViewHolder> : RecyclerView.Adapter<Q>() {
 
     private var _items = ArrayList<T>()
     var items: List<T>
@@ -43,7 +43,15 @@ abstract class BaseListAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder
         return _items.size
     }
 
+    override fun onBindViewHolder(holder: Q, position: Int) {
+        if (position < _items.count()) {
+            bindItem(holder, _items[position], position)
+        }
+    }
+
     abstract fun areItemsTheSame(oldItem: T, newItem: T): Boolean
 
     abstract fun areContentsTheSame(oldItem: T, newItem: T): Boolean
+
+    abstract fun bindItem(holder: Q, item: T, position: Int)
 }

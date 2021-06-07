@@ -9,5 +9,5 @@
     <string name="humidity">Humidity</string>
     <string name="wind">Wind</string>
     <string name="last_updated">Last updated: %1$s</string>
-    <string name="temp_celsius">%1$d&#xb0;</string>
+    <string name="temp_celsius">%1$s&#xb0;</string>
 </resources>

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/home"
-        android:name="gladun.vlad.weather.ui.home.WeatherListFragment"
+        android:name="gladun.vlad.weather.ui.home.list.WeatherListFragment"
         android:label="fragment_weather_list"
         tools:layout="@layout/fragment_weather_list">
 
