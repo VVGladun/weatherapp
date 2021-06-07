@@ -1,6 +1,9 @@
 package gladun.vlad.weather.data.model
 
+import android.content.res.Resources
+import gladun.vlad.weather.R
 import gladun.vlad.weather.data.persistence.entity.VenueForecastEntity
+import gladun.vlad.weather.util.toFullDateString
 import org.threeten.bp.Instant
 import org.threeten.bp.ZoneId
 import org.threeten.bp.ZonedDateTime
@@ -36,3 +39,36 @@ data class CountryFilterItem(
     val countryName: String,
     val isSelected: Boolean
 )
+
+data class WeatherDetails(
+    val venueId: String,
+    val venueName: String,
+    val condition: String,
+    val temp: String,
+    val feelsLike: String?,
+    val humidity: String?,
+    val wind: String?,
+    val lastUpdated: String
+) {
+    companion object {
+        fun fromEntity(entity: VenueForecastEntity, resources: Resources): WeatherDetails {
+            val localDateTime = ZonedDateTime.ofInstant(
+                Instant.ofEpochSecond(entity.lastUpdated),
+                ZoneId.systemDefault()
+            )
+
+            fun getTempString(field: String?) = if (field.isNullOrBlank()) "N/A"
+                else resources.getString(R.string.temp_celsius, field)
+
+            return WeatherDetails(
+                venueId = entity.id,
+                venueName = entity.venueName,
+                condition = entity.condition.orEmpty(),
+                temp = getTempString(entity.temp),
+                feelsLike = getTempString(entity.feelsLike),
+                humidity = entity.humidity,
+                wind = entity.wind,
+                lastUpdated = resources.getString(R.string.last_updated, localDateTime.toFullDateString()))
+        }
+    }
+}

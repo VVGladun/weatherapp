@@ -1,11 +1,15 @@
 package gladun.vlad.weather.ui.common
 
 import android.util.Log
+import androidx.annotation.IdRes
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.NavDirections
+import androidx.navigation.NavOptions
 import gladun.vlad.weather.data.network.KnownException
 import gladun.vlad.weather.data.network.UnknownException
+import gladun.vlad.weather.util.SingleEvent
 import gladun.vlad.weather.util.postIfRequired
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.launch
@@ -17,8 +21,7 @@ import kotlinx.coroutines.launch
 abstract class BaseViewModel : ViewModel() {
 
     val loading = MutableLiveData(false)
-
-    //TODO: implement base navigation logic
+    val action = MutableLiveData<SingleEvent<Action>>()
 
     /**
      * Launches a [block] in the [viewModelScope] and gives you an opportunity to handle an error directly, otherwise falls back to [onError].
@@ -52,4 +55,12 @@ abstract class BaseViewModel : ViewModel() {
         //TODO: generic error dialogs
         return true
     }
+
+    open fun onBackPressed(): Boolean = false
+
+    protected fun executeAction(action: Action) = this.action.postValue(SingleEvent(action))
+
+    protected fun navigateBack(@IdRes toDestinationId: Int? = null, inclusive: Boolean = false) = executeAction(Action.NavigateBack(toDestinationId, inclusive))
+
+    protected fun navigateTo(directions: NavDirections, options: NavOptions? = null) = executeAction(Action.NavigateTo(directions, options))
 }

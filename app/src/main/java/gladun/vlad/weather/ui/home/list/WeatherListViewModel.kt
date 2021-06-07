@@ -5,6 +5,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import gladun.vlad.weather.data.WeatherRepository
 import gladun.vlad.weather.data.model.WeatherListItem
 import gladun.vlad.weather.ui.common.BaseViewModel
+import gladun.vlad.weather.ui.home.list.WeatherListFragmentDirections.Companion.actionHomeToWeatherDetails
 import gladun.vlad.weather.util.asLiveData
 import gladun.vlad.weather.util.postIfRequired
 import kotlinx.coroutines.flow.collect
@@ -33,5 +34,9 @@ class WeatherListViewModel @Inject constructor(
             weatherRepository.updateWeatherData()
             loading.postIfRequired(false)
         }
+    }
+
+    fun navigateToDetails(venueId: String) {
+        navigateTo(actionHomeToWeatherDetails(venueId = venueId))
     }
 }

@@ -1,5 +1,7 @@
 package gladun.vlad.weather.data
 
+import android.content.res.Resources
+import gladun.vlad.weather.data.model.WeatherDetails
 import gladun.vlad.weather.data.model.WeatherListItem
 import gladun.vlad.weather.data.model.toEntity
 import gladun.vlad.weather.data.network.WeatherApiClient
@@ -11,6 +13,7 @@ import gladun.vlad.weather.util.Constants
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -21,6 +24,7 @@ class WeatherRepository @Inject constructor(
     private val countryDao: CountryDao,
     private val forecastDao: ForecastDao,
     private val preferenceStore: PreferenceStore,
+    private val resources: Resources,
     @BackgroundDispatcher private val coroutineDispatcher: CoroutineDispatcher
 ) {
 
@@ -61,7 +65,11 @@ class WeatherRepository @Inject constructor(
         }
     }
 
-    // TODO: get details
+    fun getWeatherDetails(venueId: String): Flow<WeatherDetails> {
+        return forecastDao.getForecastForVenue(venueId).mapNotNull {
+            WeatherDetails.fromEntity(it, resources)
+        }
+    }
 
     // TODO: get countries
 

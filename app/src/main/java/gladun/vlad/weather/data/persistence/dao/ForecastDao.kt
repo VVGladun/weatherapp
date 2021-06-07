@@ -10,9 +10,9 @@ abstract class ForecastDao : BaseDao<VenueForecastEntity>() {
     @Query("SELECT * FROM venue_forecast")
     abstract fun getAllForecasts(): Flow<List<VenueForecastEntity>>
 
-    @Query("SELECT * FROM venue_forecast WHERE country_id = :countryId ORDER BY venue_name LIMIT 1")
+    @Query("SELECT * FROM venue_forecast WHERE country_id = :countryId ORDER BY venue_name")
     abstract fun getForecastsForCountry(countryId: String): Flow<List<VenueForecastEntity>>
 
-    @Query("SELECT * FROM venue_forecast WHERE id = :venueId")
-    abstract fun getForecastForVenue(venueId: String): Flow<List<VenueForecastEntity>>
+    @Query("SELECT * FROM venue_forecast WHERE id = :venueId LIMIT 1")
+    abstract fun getForecastForVenue(venueId: String): Flow<VenueForecastEntity>
 }

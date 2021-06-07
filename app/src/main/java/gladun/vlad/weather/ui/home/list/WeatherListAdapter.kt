@@ -10,7 +10,8 @@ import gladun.vlad.weather.databinding.ItemVenueWeatherBinding
 import gladun.vlad.weather.ui.common.BaseListAdapter
 import gladun.vlad.weather.util.toFullDateString
 
-class WeatherListAdapter(private val resources: Resources) : BaseListAdapter<WeatherListItem, WeatherListAdapter.WeatherListItemViewHolder>() {
+class WeatherListAdapter(private val resources: Resources,
+                         private val onItemClicked: (WeatherListItem) -> Unit) : BaseListAdapter<WeatherListItem, WeatherListAdapter.WeatherListItemViewHolder>() {
     override fun areItemsTheSame(oldItem: WeatherListItem, newItem: WeatherListItem): Boolean {
         return oldItem.venueId == newItem.venueId
     }
@@ -29,6 +30,9 @@ class WeatherListAdapter(private val resources: Resources) : BaseListAdapter<Wea
         holder.binding.itemVenueCondition.text = item.condition
         holder.binding.itemVenueTemperature.text = resources.getString(R.string.temp_celsius, item.temp)
         holder.binding.itemVenueUpdated.text = resources.getString(R.string.last_updated, item.lastUpdated.toFullDateString())
+        holder.binding.root.setOnClickListener {
+            onItemClicked.invoke(item)
+        }
     }
 
     inner class WeatherListItemViewHolder(val binding: ItemVenueWeatherBinding) : RecyclerView.ViewHolder(binding.root)

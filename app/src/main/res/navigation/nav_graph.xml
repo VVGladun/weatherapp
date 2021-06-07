@@ -22,7 +22,13 @@
 
     <fragment
         android:id="@+id/weatherDetails"
-        android:name="gladun.vlad.weather.ui.home.WeatherDetailsFragment"
+        android:name="gladun.vlad.weather.ui.home.details.WeatherDetailsFragment"
         android:label="fragment_weather_details"
-        tools:layout="@layout/fragment_weather_details" />
+        tools:layout="@layout/fragment_weather_details">
+        <argument
+            android:name="venueId"
+            android:defaultValue=""
+            app:argType="string"
+            app:nullable="false" />
+    </fragment>
 </navigation>
