@@ -36,6 +36,7 @@ abstract class BaseFragment<VM: BaseViewModel> : Fragment {
                 } else {
                     it.setTitle(screenTitleResId!!)
                     it.setDisplayShowTitleEnabled(true)
+                    it.setHomeAsUpIndicator(getBackButtonIcon())
                 }
                 it.setDisplayHomeAsUpEnabled(showUp)
             }

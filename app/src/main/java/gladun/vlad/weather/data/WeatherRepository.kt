@@ -1,6 +1,8 @@
 package gladun.vlad.weather.data
 
 import android.content.res.Resources
+import gladun.vlad.weather.R
+import gladun.vlad.weather.data.model.CountryFilterItem
 import gladun.vlad.weather.data.model.WeatherDetails
 import gladun.vlad.weather.data.model.WeatherListItem
 import gladun.vlad.weather.data.model.toEntity
@@ -57,7 +59,7 @@ class WeatherRepository @Inject constructor(
             forecastDao.getAllForecasts(),
             preferenceStore.selectedCountry
         ) { forecasts, countryFilter ->
-            if (countryFilter == Constants.NO_COUNTRY_CODE) {
+            if (countryFilter == Constants.ID_ALL_COUNTRIES) {
                 forecasts
             } else {
                 forecasts.filter { it.countryId == countryFilter }
@@ -71,8 +73,31 @@ class WeatherRepository @Inject constructor(
         }
     }
 
-    // TODO: get countries
+    private val showAllCountriesItem = CountryFilterItem(
+        countryId = Constants.ID_ALL_COUNTRIES,
+        countryName = resources.getString(R.string.filter_all_countries),
+        isSelected = true
+    )
 
-    // TODO: update filter
+    fun getCountryFilterItems(): Flow<List<CountryFilterItem>> {
+        return combine(
+            countryDao.getAll(),
+            preferenceStore.selectedCountry
+        ) { countries, countryFilter ->
+            if (countryFilter == Constants.ID_ALL_COUNTRIES) {
+                countries.map { CountryFilterItem.fromEntity(it, false) }.toMutableList().apply {
+                    add(0, showAllCountriesItem)
+                }
+            } else {
+                countries.map { CountryFilterItem.fromEntity(it, it.id == countryFilter) }.toMutableList().apply {
+                    add(0, showAllCountriesItem.copy(isSelected = false))
+                }
+            }
+        }
+    }
+
+    suspend fun setFilterByCountry(countryId: String) {
+        preferenceStore.saveSelectedCountry(countryId)
+    }
 
 }

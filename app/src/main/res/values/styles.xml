@@ -34,7 +34,7 @@
         <item name="android:focusable">true</item>
         <item name="android:background">@color/default_background</item>
         <item name="android:foreground">?attr/selectableItemBackground</item>
-        <item name="android:padding">@dimen/padding_8</item>
+        <item name="android:padding">@dimen/padding_12</item>
     </style>
 
     <style name="Divider">

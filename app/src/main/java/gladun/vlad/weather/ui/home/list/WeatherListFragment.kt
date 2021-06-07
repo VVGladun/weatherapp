@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,8 +33,7 @@ class WeatherListFragment
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentWeatherListBinding.inflate(inflater, container, false)
-        val view = binding?.root
-        return view
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,7 +48,12 @@ class WeatherListFragment
         viewModel.weatherData.observe {
             (binding?.weatherListRecyclerview?.adapter as? WeatherListAdapter)?.items = it
         }
+        viewModel.isFilterVisibleData.observe { isFilterVisible ->
+            binding?.weatherListFilterButton?.isVisible = isFilterVisible
+            binding?.itemVenueDivider?.isVisible = isFilterVisible
+        }
 
+        binding!!.weatherListFilterButton.setOnClickListener { viewModel.onFilterClicked() }
         binding!!.weatherListSwiperefresh.setOnRefreshListener(this)
     }
 

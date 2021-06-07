@@ -28,9 +28,9 @@ class PreferenceStore(private val context: Context) {
         }
     }
 
-    suspend fun clearFilter() = saveSelectedCountry(Constants.NO_COUNTRY_CODE)
+    suspend fun clearFilter() = saveSelectedCountry(Constants.ID_ALL_COUNTRIES)
 
     val selectedCountry: Flow<String> = context.dataStore.data.map { prefs ->
-        prefs[COUNTRY_ID_KEY] ?: Constants.NO_COUNTRY_CODE
+        prefs[COUNTRY_ID_KEY] ?: Constants.ID_ALL_COUNTRIES
     }
 }

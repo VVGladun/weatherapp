@@ -4,6 +4,7 @@
     <string name="screen_weather_title">Weather</string>
     <string name="screen_filter_title">Select country</string>
 
+    <string name="filter_all_countries">All countries</string>
     <string name="filter">Filter</string>
     <string name="feels_like">Feels like</string>
     <string name="humidity">Humidity</string>

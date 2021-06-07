@@ -8,14 +8,14 @@
     android:background="@color/default_background">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/item_list_title"
+        android:id="@+id/item_filter_title"
         style="@style/Text.Heading2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/item_list_icon"
+        app:layout_constraintEnd_toStartOf="@+id/item_filter_icon"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/item_list_divider"
+        app:layout_constraintBottom_toTopOf="@+id/item_filter_divider"
         android:layout_marginTop="@dimen/padding_16"
         android:layout_marginStart="@dimen/padding_24"
         android:layout_marginEnd="@dimen/padding_16"
@@ -24,7 +24,7 @@
         />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/item_list_icon"
+        android:id="@+id/item_filter_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
@@ -39,7 +39,7 @@
         />
 
     <View
-        android:id="@+id/item_list_divider"
+        android:id="@+id/item_filter_divider"
         android:layout_width="0dp"
         style="@style/Divider"
         app:layout_constraintBottom_toBottomOf="parent"

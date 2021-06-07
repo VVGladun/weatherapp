@@ -2,6 +2,7 @@ package gladun.vlad.weather.data.model
 
 import android.content.res.Resources
 import gladun.vlad.weather.R
+import gladun.vlad.weather.data.persistence.entity.CountryEntity
 import gladun.vlad.weather.data.persistence.entity.VenueForecastEntity
 import gladun.vlad.weather.util.toFullDateString
 import org.threeten.bp.Instant
@@ -38,7 +39,17 @@ data class CountryFilterItem(
     val countryId: String,
     val countryName: String,
     val isSelected: Boolean
-)
+) {
+    companion object {
+        fun fromEntity(entity: CountryEntity, isSelected: Boolean): CountryFilterItem {
+            return CountryFilterItem(
+                countryId = entity.id,
+                countryName = entity.countryName,
+                isSelected = isSelected
+            )
+        }
+    }
+}
 
 data class WeatherDetails(
     val venueId: String,

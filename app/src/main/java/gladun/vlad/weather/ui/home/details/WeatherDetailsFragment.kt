@@ -29,8 +29,7 @@ class WeatherDetailsFragment : BaseFragment<WeatherDetailsViewModel>(R.layout.fr
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentWeatherDetailsBinding.inflate(inflater, container, false)
-        val view = binding?.root
-        return view
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
